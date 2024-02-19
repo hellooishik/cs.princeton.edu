@@ -1,0 +1,33 @@
+class HelloWorld {
+    public static int binarySearch(int[] a, int target) {
+        int n = a.length;
+        int low = 0;
+        int high = n - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (a[mid] == target) {
+                return mid; // Found the target at index mid
+            } else if (a[mid] < target) {
+                low = mid + 1; // Continue searching in the right half
+            } else {
+                high = mid - 1; // Continue searching in the left half
+            }
+        }
+        
+        return -1; // Target not found in the array
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int target = 7;
+        int index = binarySearch(array, target);
+        
+        if (index != -1) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+    }
+}
